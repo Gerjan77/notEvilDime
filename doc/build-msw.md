@@ -6,8 +6,7 @@ graphical user interface.
 
 Compilers Supported
 -------------------
-TODO: What works?
-Note: releases are cross-compiled using mingw running on Linux.
+    GCC              4.9 +
 
 
 Dependencies
@@ -19,7 +18,7 @@ Libraries you need to download separately and build:
 	OpenSSL         \openssl-1.0.1c-mgw        http://www.openssl.org/source/
 	Berkeley DB     \db-4.8.30.NC-mgw          http://www.oracle.com/technology/software/products/berkeley-db/index.html
 	Boost           \boost-1.50.0-mgw          http://www.boost.org/users/download/
-	miniupnpc       \miniupnpc-1.6-mgw         http://miniupnp.tuxfamily.org/files/
+	MiniUPnP Client \miniupnpc-1.6-mgw         http://miniupnp.tuxfamily.org/files/
 
 Their licenses:
 

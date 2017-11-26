@@ -4,6 +4,13 @@ UNIX BUILD NOTES
 
 Building prerequisites of notEvilDime v1.0.0 on Ubuntu 12.04
 ---------------------
+prerequisites used in this release:
+
+GCC                4.9
+OpenSSL        1.0.1c
+Berkeley DB    4.8.30.NC
+Boost              1.48
+miniupnpc       1.6
 
 
 Update gcc
@@ -116,12 +123,6 @@ Licenses of statically linked libraries:
  Boost         MIT-like license
  miniupnpc     New (3-clause) BSD license
 
-- Versions used in this release:
--  GCC           4.3.3
--  OpenSSL       1.0.1c
--  Berkeley DB   4.8.30.NC
--  Boost         1.37
--  miniupnpc     1.6
 
 Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
