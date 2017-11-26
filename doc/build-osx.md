@@ -40,16 +40,70 @@ Homebrew is a little more popular among those newer to OS X.
 The installation of the actual dependencies is covered in the Instructions
 sections below.
 
-Instructions: MacPorts
-----------------------
+Compiler:
 
-### Install dependencies
+    brew search gcc
+    brew unlink gcc
+    brew install gcc@4.9
+    brew install boost@1.55
+    
+Require the specific versions of dependencies:
+    
+    brew install openssl@1.1
+    sudo port install db48@+no_java
+    
+Check the versions:
 
-Installing the dependencies using MacPorts is very straightforward.
+     brew ls --versions
+     
+berkeley-db@4 4.8.30
+gcc@4.9 4.9.4
+openssl@1.1 1.1.0g
 
-    sudo port install boost db48@+no_java openssl miniupnpc
+boost:
 
-### Building `notevildimed`
+    chmod a+x ./dependencies/boost_1_50_0/tools/build/v2/engine/build.sh
+    cd dependencies/boost_1_50_0
+Configure (and build bjam):
+
+    chmod a+x bootstrap.sh
+    sudo su
+    ./bootstrap.sh --prefix=/opt/local
+Build (  sit back and relax.  ..     ..      ..     ):
+
+    ./b2
+Install:
+
+    ./b2 install
+    exit
+    
+MiniUPnPc:
+To install the library and headers on the system use :
+
+    cd dependencies/miniupnpc-1.6
+    sudo su
+    INSTALLPREFIX=/opt/local make install
+    exit
+
+upnpc.c is a sample client using the libminiupnpc.
+To use the libminiupnpc in your application, link it with
+libminiupnpc.a (or .so) and use the following functions found in miniupnpc.h,
+upnpcommands.h and miniwget.h :
+- upnpDiscover()
+- miniwget()
+- parserootdesc()
+- GetUPNPUrls()
+- UPNP_* (calling UPNP methods)
+
+Note : use #include <miniupnpc/miniupnpc.h> etc... for the includes
+and -lminiupnpc for the link
+
+
+
+       sudo port install db48@+no_java
+
+
+### Building `notEvilDimed`
 
 1. Clone the github tree to get the source code and go into the directory.
 
