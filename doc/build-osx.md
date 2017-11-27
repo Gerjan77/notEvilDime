@@ -30,7 +30,7 @@ not, it's the path of least resistance to install [Github for Mac](https://mac.g
 available via Homebrew or MacPorts.
 
 You will also need to install [Homebrew](http://mxcl.github.io/homebrew/)
-or [MacPorts](https://www.macports.org/) in order to install library
+AND [MacPorts](https://www.macports.org/) in order to install library
 dependencies. It's largely a religious decision which to choose, but, as of
 December 2012, MacPorts is a little easier because you can just install the
 dependencies immediately - no other work required. If you're unsure, read
@@ -45,9 +45,9 @@ Compiler:
     brew search gcc
     brew unlink gcc
     brew install gcc@4.9
-    brew install boost@1.55
+    brew install boost
     
-Require the specific versions of dependencies:
+Require the following specific versions of dependencies:
     
     brew install openssl@1.1
     sudo port install db48@+no_java
@@ -59,25 +59,12 @@ Check the versions:
 berkeley-db@4 4.8.30
 gcc@4.9 4.9.4
 openssl@1.1 1.1.0g
+boost@1.65.1
 
-boost:
 
-    chmod a+x ./dependencies/boost_1_50_0/tools/build/v2/engine/build.sh
-    cd dependencies/boost_1_50_0
-Configure (and build bjam):
 
-    chmod a+x bootstrap.sh
-    sudo su
-    ./bootstrap.sh --prefix=/opt/local
-Build (  sit back and relax.  ..     ..      ..     ):
-
-    ./b2
-Install:
-
-    ./b2 install
-    exit
-    
-MiniUPnPc:
+MiniUPnPc: We require specifically version 1.6
+-------
 To install the library and headers on the system use :
 
     cd dependencies/miniupnpc-1.6
@@ -103,7 +90,8 @@ and -lminiupnpc for the link
        sudo port install db48@+no_java
 
 
-### Building `notEvilDimed`
+Building the Deamon `notEvilDimed`
+-------
 
 1. Clone the github tree to get the source code and go into the directory.
 
@@ -172,3 +160,30 @@ Other commands:
     ./notevildimed --help  # for a list of command-line options.
     ./notevildimed -daemon # to start the notevildime daemon.
     ./notevildimed help    # When the daemon is running, to get a list of RPC commands
+
+
+The 2017 Boost library
+-------
+
+boost can safely be upgraded to the newest version available in brew.
+
+To install:
+
+    (older versions) chmod a+x ./dependencies/boost_1_50_0/tools/build/v2/engine/build.sh
+    cd dependencies/boost_1_50_0
+    Configure (and build bjam):
+
+    (older versions) chmod a+x bootstrap.sh
+    sudo su
+    ./bootstrap.sh --prefix=/opt/local
+   
+Build, sit back and relax while 14000 targets are build
+
+    ./b2
+Install:
+
+    ./b2 install
+    exit
+
+The newest boost libraries are recommended. Back in 2012 the compilers were more forgiving than
+the standard of 2017.

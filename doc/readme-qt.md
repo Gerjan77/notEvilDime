@@ -42,25 +42,14 @@ An executable named `notevildime-qt` will be built.
 
 
 
-### Mac OS X
-
+Mac OS X
+---------------------
 * Download and install the [Qt Mac OS X SDK](https://qt-project.org/downloads). It is recommended to also install Apple's Xcode with UNIX tools.
 * Download and install either [MacPorts](https://www.macports.org/) or [HomeBrew](http://mxcl.github.io/homebrew/).
-* Execute the following commands in a terminal to get the dependencies using MacPorts
 
-		sudo port selfupdate
-		sudo port install boost db48 miniupnpc
 
-* Execute the following commands in a terminal to get the dependencies using HomeBrew:
 
-		brew update
-		brew install boost miniupnpc openssl berkeley-db4
-
-- If using HomeBrew,  edit `notevildime-qt.pro` to account for library location differences. There's a diff in `contrib/homebrew/notevildime-qt-pro.patch` that shows what you need to change, or you can just patch by doing
-
-        patch -p1 < contrib/homebrew/notevildime.qt.pro.patch
-
-- Open the notevildime-qt.pro file in Qt Creator and build as normal (cmd+B)
+###  Open the notevildime-qt.pro file in Qt Creator and build as normal (cmd+B)
 
 
 Build Configuration Options
