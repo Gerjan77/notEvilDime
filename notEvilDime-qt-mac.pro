@@ -10,21 +10,19 @@ CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += c++11
 
-# for boost 1.37, add -mt to the boost libraries
-# use: qmake BOOST_LIB_SUFFIX=-mt
-# for boost thread win32 with _win32 sufix
-# use: BOOST_THREAD_LIB_SUFFIX=_win32-...
-# or when linking against a specific BerkelyDB version: BDB_LIB_SUFFIX=-4.8
-
 # Dependency library locations can be customized with:
 #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
-#    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
+#    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH,
+#    MINIUPNPC_INCLUDE_PATH and MINIUPNPC_LIB_PATH.
+
 OPENSSL_LIB_PATH = /usr/local/opt/openssl/lib
 OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl/include
 BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
 BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
 BOOST_LIB_PATH = /usr/local/opt/boost/lib
 BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
+MINIUPNPC_INCLUDE_PATH = /opt/local/include
+MINIUPNPC_LIB_PATH = /opt/local/lib
 
 OBJECTS_DIR = build
 MOC_DIR = build

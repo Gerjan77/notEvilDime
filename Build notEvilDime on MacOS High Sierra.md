@@ -55,7 +55,7 @@ BerkeleyDb
 -------------
 brew search berkeley-db
 brew install berkeley-db@4
-edit the library path -L in notEvilDime-qt.pro edit the library and include paths in notEvilDime-qt.pro
+edit the library and include paths in notEvilDime-qt.pro
 
     BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
     BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
@@ -67,14 +67,17 @@ Check the versions:
 
     brew ls --versions
 
-Libminiupc:
+Libminiupnpc:
 -------------
     cd ~/Documents/GitHub/notEvilDime/dependencies/miniupnpc-1.6
     sudo su
     INSTALLPREFIX=/opt/local make install
     exit
+    
+edit the library and include paths in notEvilDime-qt.pro
 
-
+    MINIUPNPC_INCLUDE_PATH = /opt/local/include
+    MINIUPNPC_LIB_PATH = /opt/local/lib
 
 Qt 4:
 ------
