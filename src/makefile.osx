@@ -6,29 +6,20 @@
 # Mac OS X makefile for notevildime
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
 
-# CXX=llvm-g++
-CXX=c++
-CC=cc
+CXX=llvm-g++
 DEPSDIR=/opt/local
-SSLDIR=/usr/local/opt/openssl
-BOOSTDIR=/usr/local/opt/boost
-BERKELEYDIR=/usr/local/opt/berkeley-db@4
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
- -I"$(SSLDIR)/include" \
- -I"$(BOOSTDIR)/include" \
- -I"$(BERKELEYDIR)/include"
+ -I"$(DEPSDIR)/include/db48"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
- -L"$(SSLDIR)/lib" \
- -L"$(BOOSTDIR)/lib" \
- -L"$(BERKELEYDIR)/lib"
+ -L"$(DEPSDIR)/lib/db48"
 
-USE_UPNP:=-
+USE_UPNP:=1
 USE_IPV6:=1
 
 LIBS= -dead_strip
@@ -46,8 +37,8 @@ LIBS += \
  $(DEPSDIR)/lib/libboost_program_options-mt.a \
  $(DEPSDIR)/lib/libboost_thread-mt.a \
  $(DEPSDIR)/lib/libboost_chrono-mt.a \
- $(SSLDIR)/lib/libssl.a \
- $(SSLDIR)/lib/libcrypto.a \
+ $(DEPSDIR)/lib/libssl.a \
+ $(DEPSDIR)/lib/libcrypto.a \
  -lz
 else
 TESTLIBS += \

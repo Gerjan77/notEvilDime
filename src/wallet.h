@@ -840,11 +840,11 @@ public:
 
             if (!(mapValue.empty() && _ssExtra.empty()))
             {
-                //CDataStream ss(nType, nVersion);
-                //ss.insert(ss.begin(), '\0');
-                //ss << mapValue;
-                //ss.insert(ss.end(), _ssExtra.begin(), _ssExtra.end());
-                //me.strComment.append(ss.str());
+                CDataStream ss(nType, nVersion);
+                ss.insert(ss.begin(), '\0');
+                ss << mapValue;
+                ss.insert(ss.end(), _ssExtra.begin(), _ssExtra.end());
+                me.strComment.append(ss.str());
             }
         }
 
