@@ -69,10 +69,6 @@ Libminiupc:
 
 
 
-dependencies
-----------------
-    brew install gcc
-
 Qt 4:
 ------
 Download Qt 5.9.3 from https://download.qt.io/archive/qt/5.9/5.9.3/ and Qt Creator 2.4.0 from https://download.qt.io/archive/qtcreator/2.4/ Open notEvilDime-qt.pro Go to Projects -> Build Settings -> Debug select Qt5.9.3 , Clang (86 64 bit)
