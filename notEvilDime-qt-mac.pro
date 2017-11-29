@@ -23,7 +23,8 @@ OPENSSL_LIB_PATH = /usr/local/opt/openssl/lib
 OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl/include
 BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
 BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
-
+BOOST_LIB_PATH = /usr/local/opt/boost/lib
+BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
 
 OBJECTS_DIR = build
 MOC_DIR = build

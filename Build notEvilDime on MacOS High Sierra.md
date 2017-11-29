@@ -29,9 +29,16 @@ Brew
 Boost library
 --------------
 brew install boost
+
+edit the BOOST_INCLUDE_PATH and BOOST_LIB_PATH in notEvilDime-qt.pro
+
+    BOOST_LIB_PATH = /usr/local/opt/boost/lib
+    BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
+
 edit the location of Boost libraries in src/makefile.osx
 
     line 12 BOOSTDIR=/usr/local/opt/boost
+    
 
 Openssl
 ---------
