@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'askpassphrasedialog.ui'
 **
-** Created: Wed Nov 29 13:37:28 2017
+** Created: Wed Nov 29 14:32:16 2017
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'transactionview.h'
 **
-** Created: Wed Nov 29 13:39:39 2017
+** Created: Wed Nov 29 14:34:30 2017
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
