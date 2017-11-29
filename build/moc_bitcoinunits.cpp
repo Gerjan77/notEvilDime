@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'bitcoinunits.h'
 **
-** Created: Sun Nov 26 05:22:27 2017
+** Created: Wed Nov 29 14:34:34 2017
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
