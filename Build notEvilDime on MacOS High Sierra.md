@@ -77,6 +77,33 @@ Qt 4:
 ------
 Download Qt 4.8.1 from https://download.qt.io/archive/qt/4.8/4.8.1/ and Qt Creator 2.4.0 from https://download.qt.io/archive/qtcreator/2.4/ Open notEvilDime-qt.pro Go to Projects Build Settings Debug select Qt4.8.1 , Clang (86 64 bit)
 
+
+We get a compiler warning
+
+    clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]
+
+It is solved by editing binding.gyp
+
+    cp /Applications/Xcode.app/Contents/Developer/usr/share/xcs/xcsd/node_modules/nodobjc/node_modules/ffi/binding.gyp ~/binding.gyp
+    
+    ['OS=="mac"', {
+    'xcode_settings': {
+    'GCC_ENABLE_CPP_RTTI': 'YES',
+    'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
+    'MACOSX_DEPLOYMENT_TARGET':'10.9',
+    'CLANG_CXX_LIBRARY': 'libc++',
+    'CLANG_CXX_LANGUAGE_STANDARD':'c++11',
+    'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0'
+    'OTHER_CFLAGS': [
+    '-ObjC++'
+    ]
+    },
+    'libraries': [
+    '-lobjc'
+    ],
+    }]
+    sudo cp ~/binding.gyp /Applications/Xcode.app/Contents/Developer/usr/share/xcs/xcsd/node_modules/nodobjc/node_modules/ffi/binding.gyp
+    
 notEvilDime-qt
 -----------------
 Compile notEvilDime-qt.pro
