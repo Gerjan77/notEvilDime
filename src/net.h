@@ -11,9 +11,9 @@
 #include <boost/signals2/signal.hpp>
 #include <openssl/rand.h>
 
-#ifndef WIN32
+//#ifndef WIN32
 #include <arpa/inet.h>
-#endif
+//#endif
 
 #include "mruset.h"
 #include "limitedmap.h"

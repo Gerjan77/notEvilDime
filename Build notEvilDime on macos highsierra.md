@@ -25,7 +25,8 @@ Git
 
     download Git Desktop https://desktop.github.com
     clone the repository https://github.com/Gerjan77/notEvilDime
-	
+    
+    
 Brew
 -----
 
@@ -37,15 +38,24 @@ Boost library
 
     brew install boost
 
+edit the location of Boost libraries in src/makefile.osx
+    
+    line 12 BOOSTDIR=/usr/local/opt/boost
+    
+
+
 Openssl
 ---------
 
     brew install openssl
+
 edit the OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH in notEvilDime-qt.pro
 
     OPENSSL_LIB_PATH = /usr/local/opt/openssl/lib
     OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl/include
+edit the location of openssl in src/makefile.osx
 
+    line 11 SSLDIR=/usr/local/opt/openssl
 
 
 BerkeleyDb
@@ -57,6 +67,11 @@ edit the library and include paths in notEvilDime-qt.pro
 
     BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
     BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
+
+edit the location of BerkeleyDb in src/makefile.osx
+
+line 13 BERKELEYDIR=/usr/local/opt/berkeley-db@4
+
 
 Check the versions:
 
@@ -71,6 +86,11 @@ Libminiupc:
     exit
 
 
+notEvilDime Deamon
+------------------------
+
+    cd notEvilDime/src
+    make -f makefile.osx
 
 
 Qt 4:
@@ -82,16 +102,7 @@ Go to Projects Build Settings Debug
 select Qt4.8.1 , Clang (86 64 bit)
 
 
-boost
------
 
-	sudo apt-get install libboost1.48
-
-notEvilDime
------------
-
-
-	https://github.com/Gerjan77/notEvilDime
 
 BerkeleyDB
 ----------

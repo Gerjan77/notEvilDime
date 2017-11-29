@@ -27,16 +27,17 @@ std::string static EncodeDumpTime(int64 nTime) {
 }
 
 int64 static DecodeDumpTime(const std::string &str) {
-    static const boost::posix_time::time_input_facet facet("%Y-%m-%dT%H:%M:%SZ");
-    static const boost::posix_time::ptime epoch = boost::posix_time::from_time_t(0);
-    const std::locale loc(std::locale::classic(), &facet);
-    std::istringstream iss(str);
-    iss.imbue(loc);
-    boost::posix_time::ptime ptime(boost::date_time::not_a_date_time);
-    iss >> ptime;
-    if (ptime.is_not_a_date_time())
-        return 0;
-    return (ptime - epoch).total_seconds();
+    return 946684800;
+//    static const boost::posix_time::time_input_facet facet("%Y-%m-%dT%H:%M:%SZ");
+//    static const boost::posix_time::ptime epoch = boost::posix_time::from_time_t(0);
+//    const std::locale loc(std::locale::classic(), &facet);
+//    std::istringstream iss(str);
+//    iss.imbue(loc);
+//    boost::posix_time::ptime ptime(boost::date_time::not_a_date_time);
+//    iss >> ptime;
+//    if (ptime.is_not_a_date_time())
+//        return 0;
+//    return (ptime - epoch).total_seconds();
 }
 
 std::string static EncodeDumpString(const std::string &str) {
