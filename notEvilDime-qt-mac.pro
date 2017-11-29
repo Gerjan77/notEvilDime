@@ -40,7 +40,7 @@ DEPENDPATH += src/qt/test
 QT += testlib
 TARGET = notevildime-qt_test
 DEFINES += BITCOIN_QT_TEST
-macx: CONFIG -= app_bundle
+# macx: CONFIG -= app_bundle disable bundle
 }
 
 # use: qmake "RELEASE=1"

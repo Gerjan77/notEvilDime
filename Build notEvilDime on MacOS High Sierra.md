@@ -95,6 +95,17 @@ Location of Blockchain and wallet
 --------------------------------------
     ls ~/.notevildime -l
     
+    
+Find the deploy tool
+-----------------------
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt -h
+pass the bundle
+
+    ~/Documents/GitHub/notEvilDime/notEvilDime-qt.app
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-qt.app
+
+
 Debug
 
 sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
