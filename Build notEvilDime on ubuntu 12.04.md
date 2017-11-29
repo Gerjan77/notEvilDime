@@ -56,8 +56,6 @@ make install
 
 # Configure notEvilDime Core to use our own-built instance of BDB
 cd $NED
-(fail)./autogen.sh
-(fail)./configure LDFLAGS="-L${BDB}/lib/" CPPFLAGS="-I${BDB}/include/" USE_UPNP=-
 make
 make install (optional)
 
