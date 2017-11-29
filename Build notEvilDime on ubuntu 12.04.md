@@ -59,54 +59,25 @@ cd $NED
 make
 make install (optional)
 
+#failed: 
+--------
 
+	sudo chmod a+rw+ /etc/apt/sources.list
+	echo "deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/ ./" >> /etc/apt/sources.list
+	wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/Release.key
+	sudo apt-key add Release.key
+	apt-get install libzmq3-dev
+libzmq3-dev : Depends: libzmq5 (= 4.2.2-0) but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
 
+To commit this branch:
+----------------------
 
-
-
-
-FAIL: 
-
-libzmq3 :no after configure litecoin. 
-
-
-$ sudo chmod a+rw+ /etc/apt/sources.list
-$ echo "deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/ ./" >> /etc/apt/sources.list
-$ wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/Release.key
-$ sudo apt-key add Release.key
-apt-get install libzmq3-dev
-
-BerkelyDB:
-tar -xzvf db-4.8.30.NC.tar.gz
-cd db-4.8.30.NC/build_unix/
-../dist/configure --enable-cxx
-make
-sudo make install
-
-Tell your system where to find db4.8
-export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include"
-export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib"
-sudo ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so
-
-TODO
-
-git clone https://github.com/zeromq/libzmq
-./autogen.sh && ./configure && make -j 4
-make check && make install && sudo ldconfig
-
-Or, using CMake:
-
-git clone https://github.com/zeromq/libzmq
-mkdir cmake-build && cd cmake-build
-cmake .. && make -j 4
-make test && make install && sudo ldconfig
-
-To build from master on Windows using VS2015:
-
-git clone https://github.com/zeromq/libzmq
-cd libzmq\builds\msvc
-configure
-cd build
-buildall
+	git branch ubuntu master
+	git checkout ubuntu
+	git add notevildime-qt
+	git add src/notevildimed
+	commit -a
+	git push origin ubuntu
 
 
