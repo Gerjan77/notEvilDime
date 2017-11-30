@@ -119,9 +119,15 @@ Deploy Openssl
 Deploy BerkeleyDB
 
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
+    
 Deploy the Boost library
 
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
+    
+Make sure ˜/Documents/GitHub/notEvilDime/notEvilDime-Qt.app/Contents/Resources/qt.conf contains the following lines:
+
+     [Paths]
+       Plugins = PlugIns
     
 Create a .dmg disk image
 
@@ -134,6 +140,9 @@ Location of Blockchain and wallet
 
 
 Testing to do
+---------------
+
+sign the dmg and the app
 
 run the .dmg and .app on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
 
