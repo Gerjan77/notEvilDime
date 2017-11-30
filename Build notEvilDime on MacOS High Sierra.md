@@ -79,59 +79,62 @@ edit the library and include paths in notEvilDime-qt.pro
     MINIUPNPC_INCLUDE_PATH = /opt/local/include
     MINIUPNPC_LIB_PATH = /opt/local/lib
 
-Qt 4:
+Qt 5:
 ------
 Download Qt 5.9.3 from https://download.qt.io/archive/qt/5.9/5.9.3/ and Qt Creator 2.4.0 from https://download.qt.io/archive/qtcreator/2.4/ Open notEvilDime-qt.pro Go to Projects -> Build Settings -> Debug select Qt5.9.3 , Clang (86 64 bit)
 
 
 
-notEvilDime-qt
+notEvilDime-qt.app
 -----------------
-Compile notEvilDime-qt.pro
+Compile notEvilDime-qt-mac.pro in Qt5.9.3
 
-
-
-Location of Blockchain and wallet
---------------------------------------
-    ls ~/.notevildime -l
-    
     
 Deploy
 -----------------------
-edit the Info.plist, not with Xcode but with a plist editor like iHex
+edit the Info.plist not with Xcode, but with a plist editor or iHex
 
     ~/Documents/GitHub/notEvilDime/Share/qt/Info.plist
-deploy tool
+
+Read the deploy tool help
+
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt -h
-pass the bundle
+
+Deploy the bundle
 
     ~/Documents/GitHub/notEvilDime/notEvilDime-qt.app
-to the deploy deploy tool
+    
+with the deploy deploy tool
 
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/opt/local/lib
+Deploy MiniUPnPC
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/opt/local/lib -verbose=3
+    
+Deploy Openssl
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/openssl/lib -verbose=3
+    
+Deploy BerkeleyDB
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
+Deploy the Boost library
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
+    
+Create a .dmg disk image
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -dmg -verbose=3
+
+Location of Blockchain and wallet
+--------------------------------------
+    ls -l -a ~/Library/"Application Support"/notEvilDime
 
 
 
+Testing to do
+
+run the .dmg and .app on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
 
 
-
-Debug
-
-sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
-
-libzmq3-dev
-
-
-GIT=~/git
-git clone https://github.com/zeromq/libzmq $GIT/libzmq
-cd $GIT/libzmq
-./autogen.sh
-./configure
-make -j 4
-
-notEvilDime Deamon
-
-cd notEvilDime/src
-make -f makefile.osx
