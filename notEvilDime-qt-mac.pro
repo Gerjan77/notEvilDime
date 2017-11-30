@@ -40,7 +40,17 @@ DEPENDPATH += src/qt/test
 QT += testlib
 TARGET = notevildime-qt_test
 DEFINES += BITCOIN_QT_TEST
-# macx: CONFIG -= app_bundle disable bundle
+# macx: FRAMEWORK_HEADERS.version = 0.0.1
+# macx: FRAMEWORK_HEADERS.files = path/to/header_one.h path/to/header_two.h
+# macx: FRAMEWORK_HEADERS.path = Headers
+# macx: QMAKE_BUNDLE_DATA += FRAMEWORK_HEADERS
+macx: CONFIG += app_bundle
+# macx: create_prl
+# macx: link_prl
+# macx: lib_bundle
+# macx: QMAKE_BUNDLE_EXTENSION = .notEvilDimeframework
+
+#enable bundle
 }
 
 # use: qmake "RELEASE=1"
