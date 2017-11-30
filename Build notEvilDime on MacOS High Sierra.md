@@ -9,9 +9,9 @@ Used versions
     OS type
         64-bit
     Software
-        notEvilDime
+        notEvilDime v1.0.0.0-g88ff655-beta
         Qt version 5.9.3
-        OpenSSL
+        OpenSSL OpenSSL 1.0.2m  2 Nov 2017
         
 Set the build directory
 
