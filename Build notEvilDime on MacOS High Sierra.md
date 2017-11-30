@@ -101,11 +101,20 @@ Deploy
 edit the Info.plist, not with Xcode but with a plist editor like iHex
 
     ~/Documents/GitHub/notEvilDime/Share/qt/Info.plist
+deploy tool
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt -h
 pass the bundle
 
     ~/Documents/GitHub/notEvilDime/notEvilDime-qt.app
+to the deploy deploy tool
+
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/opt/local/lib
+
+
+
+
 
 
 Debug

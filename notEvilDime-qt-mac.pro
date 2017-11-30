@@ -23,6 +23,7 @@ BOOST_LIB_PATH = /usr/local/opt/boost/lib
 BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
 MINIUPNPC_INCLUDE_PATH = /opt/local/include
 MINIUPNPC_LIB_PATH = /opt/local/lib
+# staticlib=> ERROR: no file at "/usr/lib/libminiupnpc.8.dylib"
 
 OBJECTS_DIR = build
 MOC_DIR = build
@@ -40,17 +41,7 @@ DEPENDPATH += src/qt/test
 QT += testlib
 TARGET = notevildime-qt_test
 DEFINES += BITCOIN_QT_TEST
-# macx: FRAMEWORK_HEADERS.version = 0.0.1
-# macx: FRAMEWORK_HEADERS.files = path/to/header_one.h path/to/header_two.h
-# macx: FRAMEWORK_HEADERS.path = Headers
-# macx: QMAKE_BUNDLE_DATA += FRAMEWORK_HEADERS
-macx: CONFIG += app_bundle
-# macx: create_prl
-# macx: link_prl
-# macx: lib_bundle
-# macx: QMAKE_BUNDLE_EXTENSION = .notEvilDimeframework
 
-#enable bundle
 }
 
 # use: qmake "RELEASE=1"
@@ -100,7 +91,7 @@ contains(USE_UPNP, -) {
     count(USE_UPNP, 0) {
         USE_UPNP=1
     }
-    DEFINES += USE_UPNP=$$USE_UPNP STATICLIB
+    # DEFINES += USE_UPNP=$$USE_UPNP STATICLIB
     INCLUDEPATH += $$MINIUPNPC_INCLUDE_PATH
     LIBS += $$join(MINIUPNPC_LIB_PATH,,-L,) -lminiupnpc
     win32:LIBS += -liphlpapi
@@ -341,6 +332,17 @@ HEADERS += src/qt/qrcodedialog.h
 SOURCES += src/qt/qrcodedialog.cpp
 FORMS += src/qt/forms/qrcodedialog.ui
 }
+
+macx: FRAMEWORK_HEADERS.version = 0.0.1
+macx: FRAMEWORK_HEADERS.files = $$HEADERS
+macx: FRAMEWORK_HEADERS.path = build/fheaders
+macx: QMAKE_BUNDLE_DATA += FRAMEWORK_HEADERS
+macx: CONFIG += app_bundle
+macx: CONFIG += create_prl
+macx: CONFIG += link_prl
+macx: CONFIG += lib_bundle
+macx: QMAKE_BUNDLE_EXTENSION = .notEvilDimeframework
+
 
 
 # Todo: Remove this line when switching to Qt5, as that option was removed
