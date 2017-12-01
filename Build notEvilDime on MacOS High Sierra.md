@@ -132,6 +132,15 @@ Make sure ˜/Documents/GitHub/notEvilDime/notEvilDime-Qt.app/Contents/Resources/
 Create a .dmg disk image
 
     ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -dmg -verbose=3
+    
+Sign with the apple developer identity in your keychain
+
+    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v notEvilDime-Qt.dmg
+    
+Check the signature
+
+    codesign -v --verbose=4 --display notEvilDime-Qt.dmg
+
 
 Location of Blockchain and wallet
 --------------------------------------
@@ -142,8 +151,6 @@ Location of Blockchain and wallet
 Testing to do
 ---------------
 
-sign the dmg and the app
-
-run the .dmg and .app on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
+run the .dmg on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
 
 
