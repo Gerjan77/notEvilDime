@@ -104,44 +104,52 @@ Read the deploy tool help
 
 Deploy the bundle
 
-    ~/Documents/GitHub/notEvilDime/notEvilDime-qt.app
+    /volumes/FAT32/app/notEvilDime-Qt.app
     
-with the deploy deploy tool
-
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app
-
+with the deploy deploy tool.
 Deploy MiniUPnPC
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/opt/local/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/opt/local/lib -verbose=3
     
 Deploy Openssl
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/openssl/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/usr/local/opt/openssl/lib -verbose=3
     
 Deploy BerkeleyDB
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
     
 Deploy the Boost library
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
     
 Make sure ˜/Documents/GitHub/notEvilDime/notEvilDime-Qt.app/Contents/Resources/qt.conf contains the following lines:
 
      [Paths]
        Plugins = PlugIns
     
-Create a .dmg disk image
+Copy notEvilDime out of the .app bundle and sign it's code
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -dmg -verbose=3
+    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v /volumes/FAT32/app/notEvilDime-Qt
+
+Place it back in the app bundle
+
+Check the bundle signature
+
+    codesign -v --verbose=4 --display /volumes/FAT32/app/notEvilDime-Qt.app
     
+Create a .dmg disk image
+    
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -dmg -verbose=3
+    
+  
 Sign with the apple developer identity in your keychain
 
-    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v notEvilDime-Qt.dmg
+    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v /volumes/FAT32/app/notEvilDime-Qt.dmg
     
 Check the signature
 
-    codesign -v --verbose=4 --display notEvilDime-Qt.dmg
+    codesign -v --verbose=4 --display /volumes/FAT32/app/notEvilDime-Qt.app
 
 
 Location of Blockchain and wallet
