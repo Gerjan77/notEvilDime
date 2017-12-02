@@ -87,7 +87,9 @@ Download Qt 5.9.3 from https://download.qt.io/archive/qt/5.9/5.9.3/ and Qt Creat
 
 notEvilDime-qt.app
 -----------------
-Compile notEvilDime-qt-mac.pro in Qt5.9.3
+Compile notEvilDime-qt-mac.pro in Qt Creator 4.4.1 based on Qt 5.9.3, Clang 7.0, 64 bit and set the shadow build output to a FAT32 formatted drive. Include build.h
+
+    /volumes/FAT32/app
 
     
 Deploy

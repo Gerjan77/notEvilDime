@@ -17,7 +17,7 @@
 	<key>CFBundleExecutable</key>
 	<string>notEvilDime-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.bitcoinfoundation.Bitcoin-Qt</string>
+	<string>com.goodjobunit.notEvilDime</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
