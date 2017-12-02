@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'intro.ui'
 **
-** Created: Wed Nov 29 14:32:16 2017
-**      by: Qt User Interface Compiler version 4.8.1
+** Created by: Qt User Interface Compiler version 5.9.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,19 +10,19 @@
 #define UI_INTRO_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -53,13 +52,13 @@ public:
     void setupUi(QDialog *Intro)
     {
         if (Intro->objectName().isEmpty())
-            Intro->setObjectName(QString::fromUtf8("Intro"));
+            Intro->setObjectName(QStringLiteral("Intro"));
         Intro->resize(674, 363);
         verticalLayout = new QVBoxLayout(Intro);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         label_2 = new QLabel(Intro);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("QLabel { font-style:italic; }"));
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setStyleSheet(QStringLiteral("QLabel { font-style:italic; }"));
         label_2->setWordWrap(true);
 
         verticalLayout->addWidget(label_2);
@@ -69,47 +68,47 @@ public:
         verticalLayout->addItem(verticalSpacer_4);
 
         label_4 = new QLabel(Intro);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setWordWrap(true);
 
         verticalLayout->addWidget(label_4);
 
         sizeWarningLabel = new QLabel(Intro);
-        sizeWarningLabel->setObjectName(QString::fromUtf8("sizeWarningLabel"));
+        sizeWarningLabel->setObjectName(QStringLiteral("sizeWarningLabel"));
         sizeWarningLabel->setWordWrap(true);
 
         verticalLayout->addWidget(sizeWarningLabel);
 
         dataDirDefault = new QRadioButton(Intro);
-        dataDirDefault->setObjectName(QString::fromUtf8("dataDirDefault"));
+        dataDirDefault->setObjectName(QStringLiteral("dataDirDefault"));
 
         verticalLayout->addWidget(dataDirDefault);
 
         dataDirCustom = new QRadioButton(Intro);
-        dataDirCustom->setObjectName(QString::fromUtf8("dataDirCustom"));
+        dataDirCustom->setObjectName(QStringLiteral("dataDirCustom"));
 
         verticalLayout->addWidget(dataDirCustom);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(0);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         horizontalSpacer = new QSpacerItem(60, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
         verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
         horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         dataDirectory = new QLineEdit(Intro);
-        dataDirectory->setObjectName(QString::fromUtf8("dataDirectory"));
+        dataDirectory->setObjectName(QStringLiteral("dataDirectory"));
 
         horizontalLayout_2->addWidget(dataDirectory);
 
         ellipsisButton = new QPushButton(Intro);
-        ellipsisButton->setObjectName(QString::fromUtf8("ellipsisButton"));
+        ellipsisButton->setObjectName(QStringLiteral("ellipsisButton"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -129,7 +128,7 @@ public:
         verticalLayout_2->addItem(verticalSpacer_3);
 
         freeSpace = new QLabel(Intro);
-        freeSpace->setObjectName(QString::fromUtf8("freeSpace"));
+        freeSpace->setObjectName(QStringLiteral("freeSpace"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(1);
         sizePolicy1.setVerticalStretch(0);
@@ -144,7 +143,7 @@ public:
         verticalLayout_2->addItem(verticalSpacer_2);
 
         errorMessage = new QLabel(Intro);
-        errorMessage->setObjectName(QString::fromUtf8("errorMessage"));
+        errorMessage->setObjectName(QStringLiteral("errorMessage"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -166,7 +165,7 @@ public:
         verticalLayout->addItem(verticalSpacer);
 
         buttonBox = new QDialogButtonBox(Intro);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
@@ -182,12 +181,12 @@ public:
 
     void retranslateUi(QDialog *Intro)
     {
-        Intro->setWindowTitle(QApplication::translate("Intro", "Welcome", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("Intro", "Welcome to notEvilDime-Qt.", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("Intro", "As this is the first time the program is launched, you can choose where notEvilDime-Qt will store its data.", 0, QApplication::UnicodeUTF8));
-        sizeWarningLabel->setText(QApplication::translate("Intro", "notEvilDime-Qt will download and store a copy of the notEvilDime block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.", 0, QApplication::UnicodeUTF8));
-        dataDirDefault->setText(QApplication::translate("Intro", "Use the default data directory", 0, QApplication::UnicodeUTF8));
-        dataDirCustom->setText(QApplication::translate("Intro", "Use a custom data directory:", 0, QApplication::UnicodeUTF8));
+        Intro->setWindowTitle(QApplication::translate("Intro", "Welcome", Q_NULLPTR));
+        label_2->setText(QApplication::translate("Intro", "Welcome to notEvilDime-Qt.", Q_NULLPTR));
+        label_4->setText(QApplication::translate("Intro", "As this is the first time the program is launched, you can choose where notEvilDime-Qt will store its data.", Q_NULLPTR));
+        sizeWarningLabel->setText(QApplication::translate("Intro", "notEvilDime-Qt will download and store a copy of the notEvilDime block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.", Q_NULLPTR));
+        dataDirDefault->setText(QApplication::translate("Intro", "Use the default data directory", Q_NULLPTR));
+        dataDirCustom->setText(QApplication::translate("Intro", "Use a custom data directory:", Q_NULLPTR));
         freeSpace->setText(QString());
     } // retranslateUi
 

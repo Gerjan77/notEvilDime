@@ -9,9 +9,9 @@ Used versions
     OS type
         64-bit
     Software
-        notEvilDime
+        notEvilDime v1.0.0.0-g88ff655-beta
         Qt version 5.9.3
-        OpenSSL
+        OpenSSL OpenSSL 1.0.2m  2 Nov 2017
         
 Set the build directory
 
@@ -29,9 +29,16 @@ Brew
 Boost library
 --------------
 brew install boost
+
+edit the BOOST_INCLUDE_PATH and BOOST_LIB_PATH in notEvilDime-qt.pro
+
+    BOOST_LIB_PATH = /usr/local/opt/boost/lib
+    BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
+
 edit the location of Boost libraries in src/makefile.osx
 
     line 12 BOOSTDIR=/usr/local/opt/boost
+    
 
 Openssl
 ---------
@@ -48,7 +55,7 @@ BerkeleyDb
 -------------
 brew search berkeley-db
 brew install berkeley-db@4
-edit the library path -L in notEvilDime-qt.pro edit the library and include paths in notEvilDime-qt.pro
+edit the library and include paths in notEvilDime-qt.pro
 
     BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
     BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
@@ -60,46 +67,90 @@ Check the versions:
 
     brew ls --versions
 
-Libminiupc:
+Libminiupnpc:
 -------------
     cd ~/Documents/GitHub/notEvilDime/dependencies/miniupnpc-1.6
     sudo su
     INSTALLPREFIX=/opt/local make install
     exit
+    
+edit the library and include paths in notEvilDime-qt.pro
 
+    MINIUPNPC_INCLUDE_PATH = /opt/local/include
+    MINIUPNPC_LIB_PATH = /opt/local/lib
 
-
-Qt 4:
+Qt 5:
 ------
 Download Qt 5.9.3 from https://download.qt.io/archive/qt/5.9/5.9.3/ and Qt Creator 2.4.0 from https://download.qt.io/archive/qtcreator/2.4/ Open notEvilDime-qt.pro Go to Projects -> Build Settings -> Debug select Qt5.9.3 , Clang (86 64 bit)
 
 
 
-notEvilDime-qt
+notEvilDime-qt.app
 -----------------
-Compile notEvilDime-qt.pro
+Compile notEvilDime-qt-mac.pro in Qt5.9.3
 
+    
+Deploy
+-----------------------
+edit the Info.plist not with Xcode, but with a plist editor or iHex
+
+    ~/Documents/GitHub/notEvilDime/Share/qt/Info.plist
+
+Read the deploy tool help
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt -h
+
+Deploy the bundle
+
+    ~/Documents/GitHub/notEvilDime/notEvilDime-qt.app
+    
+with the deploy deploy tool
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app
+
+Deploy MiniUPnPC
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/opt/local/lib -verbose=3
+    
+Deploy Openssl
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/openssl/lib -verbose=3
+    
+Deploy BerkeleyDB
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
+    
+Deploy the Boost library
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
+    
+Make sure ˜/Documents/GitHub/notEvilDime/notEvilDime-Qt.app/Contents/Resources/qt.conf contains the following lines:
+
+     [Paths]
+       Plugins = PlugIns
+    
+Create a .dmg disk image
+
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/Documents/GitHub/notEvilDime/notEvilDime-Qt.app -dmg -verbose=3
+    
+Sign with the apple developer identity in your keychain
+
+    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v notEvilDime-Qt.dmg
+    
+Check the signature
+
+    codesign -v --verbose=4 --display notEvilDime-Qt.dmg
 
 
 Location of Blockchain and wallet
 --------------------------------------
-    ls ~/.notevildime -l
-    
-Debug
-
-sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
-
-libzmq3-dev
+    ls -l -a ~/Library/"Application Support"/notEvilDime
 
 
-GIT=~/git
-git clone https://github.com/zeromq/libzmq $GIT/libzmq
-cd $GIT/libzmq
-./autogen.sh
-./configure
-make -j 4
 
-notEvilDime Deamon
+Testing to do
+---------------
 
-cd notEvilDime/src
-make -f makefile.osx
+run the .dmg on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
+
+
