@@ -87,9 +87,9 @@ Download Qt 5.9.3 from https://download.qt.io/archive/qt/5.9/5.9.3/ and Qt Creat
 
 notEvilDime-qt.app
 -----------------
-Compile notEvilDime-qt-mac.pro in Qt Creator 4.4.1 based on Qt 5.9.3, Clang 7.0, 64 bit and set the shadow build output to a FAT32 formatted drive. Include build.h
+Compile notEvilDime-qt-mac.pro in Qt Creator 4.4.1 based on Qt 5.9.3, Clang 7.0, 64 bit
 
-    /volumes/FAT32/app
+
 
     
 Deploy
@@ -104,53 +104,45 @@ Read the deploy tool help
 
 Deploy the bundle
 
-    /volumes/FAT32/app/notEvilDime-Qt.app
+    ~/GitHub/notEvilDime/notEvilDime-Qt.app
     
 with the deploy deploy tool.
 Deploy MiniUPnPC
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/opt/local/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/opt/local/lib -verbose=3
     
 Deploy Openssl
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/usr/local/opt/openssl/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/openssl/lib -verbose=3
     
 Deploy BerkeleyDB
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/berkeley-db@4/lib -verbose=3
     
 Deploy the Boost library
 
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
+    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt ~/GitHub/notEvilDime/notEvilDime-Qt.app -libpath=/usr/local/opt/boost/lib -verbose=3
     
 Make sure ˜/Documents/GitHub/notEvilDime/notEvilDime-Qt.app/Contents/Resources/qt.conf contains the following lines:
 
      [Paths]
        Plugins = PlugIns
     
-Copy notEvilDime out of the .app bundle and sign it's code
+(optionally) Copy the .app bundle to a FAT32 volume
 
-    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v /volumes/FAT32/app/notEvilDime-Qt
+       /volumes/FAT32/app/notEvilDime-Qt.app
 
-Place it back in the app bundle
 
-Check the bundle signature
-
-    codesign -v --verbose=4 --display /volumes/FAT32/app/notEvilDime-Qt.app
-    
-Create a .dmg disk image
-    
-    ~/Qt5.9.3/5.9.3/clang_64/bin/macdeployqt /volumes/FAT32/app/notEvilDime-Qt.app -dmg -verbose=3
-    
-  
 Sign with the apple developer identity in your keychain
 
-    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v /volumes/FAT32/app/notEvilDime-Qt.dmg
+    codesign -f -s "3rd Party Mac Developer Application: G.J.A. Uijtdewilligen (CK92ZX6P5T)" -i "com.goodjobunit.notEvilDime" -v /volumes/FAT32/app/notEvilDime-Qt.app
     
 Check the signature
 
     codesign -v --verbose=4 --display /volumes/FAT32/app/notEvilDime-Qt.app
-
+    
+Error: unsealed contents present in the bundle root
+because four packages are from other developers.
 
 Location of Blockchain and wallet
 --------------------------------------
@@ -161,6 +153,6 @@ Location of Blockchain and wallet
 Testing to do
 ---------------
 
-run the .dmg on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
+run the app on a fresh install of MacOS 10.10 Yosemite on the apple account of my beta tester
 
 
