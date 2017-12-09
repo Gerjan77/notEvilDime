@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sendcoinsentry.ui'
 **
-** Created: Sun Nov 26 05:05:45 2017
+** Created: Sat Dec 9 01:35:36 2017
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
