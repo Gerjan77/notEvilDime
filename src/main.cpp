@@ -1302,9 +1302,10 @@ static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
 {
     const CBigNum &bnLimit = Params().ProofOfWorkLimit();
-    // Testnet has min-difficulty blocks
+    // Allow a decrease of current block difficulty
     // after nTargetSpacing*2 time between blocks:
-    if (TestNet() && nTime > nTargetSpacing*2)
+    // gju
+    if (nTime > nTargetSpacing*2)
         return bnLimit.GetCompact();
 
     CBigNum bnResult;
@@ -1332,21 +1333,18 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // Only change once per interval
     if ((pindexLast->nHeight+1) % nInterval != 0)
     {
-        if (TestNet())
+        // Special difficulty rule:
+        // If the new block's timestamp is more than 2* 10 minutes
+        // then allow mining of a min-difficulty block.
+        if (pblock->nTime > pindexLast->nTime + nTargetSpacing*2)
+               return nProofOfWorkLimit;
+        else
         {
-            // Special difficulty rule for testnet:
-            // If the new block's timestamp is more than 2* 10 minutes
-            // then allow mining of a min-difficulty block.
-            if (pblock->nTime > pindexLast->nTime + nTargetSpacing*2)
-                return nProofOfWorkLimit;
-            else
-            {
-                // Return the last non-special-min-difficulty-rules-block
-                const CBlockIndex* pindex = pindexLast;
-                while (pindex->pprev && pindex->nHeight % nInterval != 0 && pindex->nBits == nProofOfWorkLimit)
-                    pindex = pindex->pprev;
-                return pindex->nBits;
-            }
+            // Return the last non-special-min-difficulty-rules-block
+            const CBlockIndex* pindex = pindexLast;
+            while (pindex->pprev && pindex->nHeight % nInterval != 0 && pindex->nBits == nProofOfWorkLimit)
+                pindex = pindex->pprev;
+            return pindex->nBits;
         }
         return pindexLast->nBits;
     }
@@ -1582,8 +1580,8 @@ void UpdateTime(CBlockHeader& block, const CBlockIndex* pindexPrev)
     block.nTime = max(pindexPrev->GetMedianTimePast()+1, GetAdjustedTime());
 
     // Updating time can change work required on testnet:
-    if (TestNet())
-        block.nBits = GetNextWorkRequired(pindexPrev, &block);
+    // gju
+    block.nBits = GetNextWorkRequired(pindexPrev, &block);
 }
 
 

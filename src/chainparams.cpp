@@ -33,7 +33,7 @@ public:
         pchMessageStart[2] = 0x6c;
         pchMessageStart[3] = 0x74;
         vAlertPubKey = ParseHex("045f5c0ffcee9f13ce6b8e96787634ecf0819057c65df9c5569138f59c04ce0a67c28e1d117eb98ec0e224ae0f84618ca4bc0a05579fbfa333d0e82d9f4ceb5d6a");
-        nDefaultPort = 17933;
+        nDefaultPort = 17711;
         nRPCPort = 17934;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 32);
         nSubsidyHalvingInterval = 210000;
@@ -47,6 +47,7 @@ public:
         //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
         //   vMerkleTree: 4a5e1e
         const char* pszTimestamp = "Dark Web Child Porn Kingpin Jailed for 30 Years";
+        //const char* pszTimestamp = "";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
