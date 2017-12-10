@@ -62,7 +62,7 @@ notEvilDime
 -----------
 
 	NED=$GIT/NotEvilDime
-	
+	git clone https://github.com/Gerjan77/notEvilDime $NED -b v3-32-bit
 
 BerkeleyDB
 ----------
