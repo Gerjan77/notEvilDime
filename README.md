@@ -1,3 +1,48 @@
+
+
+
+main.cpp
+
+l 1282 block reward int64 nSubsidy = 49 * COIN + 95 * CENT;
+
+l1380    // debug print every 60 sec
+if (GetAdjustedTime() > iDebugPrintSpacing + 59)
+{
+iDebugPrintSpacing = GetAdjustedTime();
+
+printf("Difficulty before retarget %f. Difficulty after retarget %f\n",Difficulty(pindexLast->nBits),Difficulty(bnNew.GetCompact()));
+if (pblock->nTime > pindexLast->nTime + nTargetSpacing*2)
+{
+printf("Working on current block %" PRI64d" sec. target spacing %" PRI64d" sec.\n", pblock->nTime - pindexLast->nTime, nTargetSpacing);
+printf("Difficulty after reset %f\n",Difficulty(Params().ProofOfWorkLimit().GetCompact()));
+
+l 1396
+double Difficulty(unsigned int bnDiff)
+{
+int nShift = (bnDiff >> 24) & 0xff;
+double dDiff =
+(double)0x0000ffff / (double)(bnDiff & 0x00ffffff);
+while (nShift < 29)
+{
+dDiff *= 256.0;
+nShift++;
+}
+while (nShift > 29)
+{
+dDiff /= 256.0;
+nShift--;
+}
+return dDiff;
+}
+
+chainparams l 36 nDefaultPort = 17711;
+
+const char* pszTimestamp = "Eva Coin is named after talkshow host Eva Jinek";
+genesis.nTime    = 1494888013;
+genesis.nNonce   = 2087385161;
+assert(hashGenesisBlock == uint256("0x000000006d7e2bfc108eb0bdfa44f01a55770449166215980d13c32563fb34a5"));
+assert(genesis.hashMerkleRoot == uint256("0x1c70dcd890f673e76970c2de7125723d19eb8ffcc527cf861f6e19fec1741bb8"));
+
 notEvilDime integration/staging tree
 ================================
 

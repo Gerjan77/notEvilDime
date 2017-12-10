@@ -37,17 +37,7 @@ public:
         nRPCPort = 17934;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 32);
         nSubsidyHalvingInterval = 210000;
-
-        // Build the genesis block. Note that the output of the genesis coinbase cannot
-        // be spent as it did not originally exist in the database.
-        //
-        // CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1494888012, nBits=1d00ffff, nNonce=0, vtx=1)
-        //   CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
-        //   vMerkleTree: 4a5e1e
-        const char* pszTimestamp = "Dark Web Child Porn Kingpin Jailed for 30 Years";
-        //const char* pszTimestamp = "";
+        const char* pszTimestamp = "Eva Coin is named after talkshow host Eva Jinek";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -58,9 +48,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1494888012;
+        genesis.nTime    = 1494888013;
         genesis.nBits    = 0x1d00ffff;
-        genesis.nNonce   = 2824098268;
+        genesis.nNonce   = 2087385161;
 
         hashGenesisBlock = genesis.GetHash();
                     
@@ -96,9 +86,8 @@ public:
             printf("genesis.GetHash = %s\n",genesis.GetHash().ToString().c_str());
             exit(1);
         }
-        
-        assert(hashGenesisBlock == uint256("0x00000000862233d4c6ca4e855b73e7356a6383fac6d11359f7a4bdc769bd77f6"));
-        assert(genesis.hashMerkleRoot == uint256("0x173977eceb9deb88ed8bfca18d20948b53cef5e3479bc89f482e599bb53cad59"));
+        assert(hashGenesisBlock == uint256("0x000000006d7e2bfc108eb0bdfa44f01a55770449166215980d13c32563fb34a5"));
+        assert(genesis.hashMerkleRoot == uint256("0x1c70dcd890f673e76970c2de7125723d19eb8ffcc527cf861f6e19fec1741bb8"));
 
         vSeeds.push_back(CDNSSeedData("walletbuilders.com", "node.walletbuilders.com"));
 
@@ -156,11 +145,10 @@ public:
         strDataDir = "testnet3";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1494888012;
-        genesis.nNonce = 2824098268;
+        genesis.nTime    = 1494888013;
+        genesis.nNonce   = 2087385161;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000000862233d4c6ca4e855b73e7356a6383fac6d11359f7a4bdc769bd77f6"));
-
+        assert(hashGenesisBlock == uint256("0x000000006d7e2bfc108eb0bdfa44f01a55770449166215980d13c32563fb34a5"));
         vFixedSeeds.clear();
         vSeeds.clear();
 

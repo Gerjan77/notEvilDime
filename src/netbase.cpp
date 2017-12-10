@@ -309,6 +309,8 @@ bool static Socks5(string strDest, int port, SOCKET& hSocket)
     return true;
 }
 
+int64 idebugPrintlast;
+
 bool static ConnectSocketDirectly(const CService &addrConnect, SOCKET& hSocketRet, int nTimeout)
 {
     hSocketRet = INVALID_SOCKET;
@@ -382,7 +384,12 @@ bool static ConnectSocketDirectly(const CService &addrConnect, SOCKET& hSocketRe
             }
             if (nRet != 0)
             {
-                printf("connect() failed after select(): %s\n",strerror(nRet));
+                // gju debug print every 300 secs
+                if (GetAdjustedTime() > idebugPrintlast + 299)
+                {
+                    idebugPrintlast = GetAdjustedTime();
+                    printf("connect() failed after select(): %s\n",strerror(nRet));
+                }
                 closesocket(hSocket);
                 return false;
             }
@@ -393,7 +400,12 @@ bool static ConnectSocketDirectly(const CService &addrConnect, SOCKET& hSocketRe
         else
 #endif
         {
-            printf("connect() failed: %i\n",WSAGetLastError());
+            // gju debug print every 300 secs
+            if (GetAdjustedTime() > idebugPrintlast + 299)
+            {
+                idebugPrintlast = GetAdjustedTime();
+                printf("connect() failed: %i\n",WSAGetLastError());
+            }
             closesocket(hSocket);
             return false;
         }
